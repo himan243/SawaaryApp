@@ -54,10 +54,10 @@ dependencies {
     implementation(libs.androidx.material3)
     
     // Navigation
-    implementation(libs.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
     
     // ViewModel
-    implementation(libs.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     
     // Firebase
     implementation(platform(libs.firebase.bom))
@@ -78,10 +78,15 @@ dependencies {
     // Maps Compose
     implementation(libs.maps.compose)
     implementation(libs.maps.compose.utils)
+    // Maps Utils (polyline decode, etc.)
+    implementation("com.google.maps.android:android-maps-utils:3.8.2")
+
+    // Networking for Directions API
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     
     // Material Icons Extended
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
-    
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -90,4 +95,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.androidx.glance.appwidget)
+
 }
