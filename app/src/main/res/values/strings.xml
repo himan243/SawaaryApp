@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Sawaary</string>
+    <string name="google_maps_key">AIzaSyAXLc9QBeGxDsgVhLFssQ5bRaTSBQbXTB8</string>
+    
+    <!-- App strings -->
+    <string name="driver_mode">Driver Mode</string>
+    <string name="traveler_mode">Traveler Mode</string>
+    <string name="start_tracking">Start Tracking</string>
+    <string name="stop_tracking">Stop Tracking</string>
+    <string name="pause_tracking">Pause</string>
+    <string name="resume_tracking">Resume</string>
+    <string name="location_permission_required">Location permission is required for this app to function properly</string>
+    <string name="location_permission_denied">Location permission denied. Please enable it in settings.</string>
+    <string name="no_buses_nearby">No buses found within 20km radius</string>
+    <string name="searching_buses">Searching for nearby buses...</string>
+    <string name="bus_eta">ETA: %1$s</string>
+    <string name="bus_distance">Distance: %1$s km</string>
+    <string name="license_plate">License Plate: %1$s</string>
+    <string name="route_to">Route to: %1$s</string>
+</resources>

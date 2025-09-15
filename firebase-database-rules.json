@@ -1,0 +1,106 @@
+{
+  "rules": {
+    // Users collection - basic user information
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".validate": "newData.hasChildren(['uid', 'email', 'name', 'userType'])"
+      }
+    },
+    
+    // Drivers collection - driver-specific information
+    "drivers": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "$uid === auth.uid",
+        ".validate": "newData.hasChildren(['uid', 'licensePlate', 'vehicleNumber', 'driverLicense'])",
+        "currentLocation": {
+          ".validate": "newData.hasChildren(['latitude', 'longitude', 'timestamp'])"
+        },
+        "currentTrip": {
+          ".validate": "newData.hasChildren(['tripId', 'route', 'startTime', 'status'])"
+        }
+      }
+    },
+    
+    // Bus locations - real-time location updates
+    "bus_locations": {
+      "$busId": {
+        ".read": "auth != null",
+        ".write": "auth != null && root.child('drivers').child(auth.uid).exists()",
+        ".validate": "newData.hasChildren(['busId', 'location', 'isActive'])",
+        "location": {
+          ".validate": "newData.hasChildren(['latitude', 'longitude', 'timestamp'])"
+        }
+      }
+    },
+    
+    // Active trips
+    "trips": {
+      "$tripId": {
+        ".read": "auth != null",
+        ".write": "auth != null && (newData.child('driverId').val() === auth.uid || data.child('driverId').val() === auth.uid)",
+        ".validate": "newData.hasChildren(['tripId', 'driverId', 'busId', 'route', 'startTime', 'status'])"
+      }
+    },
+    
+    // Trip history
+    "trip_history": {
+      "$uid": {
+        "$tripId": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        }
+      }
+    },
+    
+    // Bus stops and routes (public read access)
+    "bus_stops": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    
+    "routes": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    
+    // User preferences and settings
+    "user_preferences": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    
+    // FCM tokens for push notifications
+    "fcm_tokens": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    
+    // Bus capacity and passenger count
+    "bus_capacity": {
+      "$busId": {
+        ".read": "auth != null",
+        ".write": "auth != null && root.child('drivers').child(auth.uid).exists()"
+      }
+    },
+    
+    // Emergency contacts and alerts
+    "emergency_alerts": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    
+    // App configuration and announcements
+    "app_config": {
+      ".read": "auth != null",
+      ".write": false
+    }
+  }
+}
+

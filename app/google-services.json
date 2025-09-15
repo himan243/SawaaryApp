@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "862089175191",
+    "project_id": "sawaary-7a9ce",
+    "storage_bucket": "sawaary-7a9ce.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862089175191:android:d3804d15541c058ded89d2",
+        "android_client_info": {
+          "package_name": "com.adtu.sawaary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMFmrbSFXdE53LvzGs-ZTRNq18znhFzms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
